@@ -10,6 +10,7 @@ export class HomePage {
 
   private userInput:string;
   public result:string;
+  public matches: Array<any>;
 
   constructor(
     public navCtrl: NavController,
@@ -27,6 +28,7 @@ export class HomePage {
         // API response event handler
         console.log(response);
         this.result = response.responseData.translatedText;
+        this.matches = response.matches;
       }
     );
   }
