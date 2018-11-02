@@ -9,6 +9,7 @@ import { TranslationProvider } from '../../providers/translation/translation';
 export class HomePage {
 
   private userInput:string;
+  public result:string;
 
   constructor(
     public navCtrl: NavController,
@@ -21,7 +22,13 @@ export class HomePage {
     //console.log(userInput);
     this.userInput = userInput;
 
-
+    this.translationProvider.getTranslation(userInput).subscribe(
+      (response) => {
+        // API response event handler
+        console.log(response);
+        this.result = response.responseData.translatedText;
+      }
+    );
   }
 
 }
